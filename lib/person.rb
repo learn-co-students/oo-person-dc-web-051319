@@ -30,21 +30,21 @@ attr_reader :name, :happiness, :hygiene
  end
 
  def happy?
-   if happiness> 7
-      @happiness = true
+   if self.happiness > 7
+      return true
    else
-     false
+     return false
    end
 end
 def clean?
-  if hygiene > 7
-    @hygiene = true
+  if self.hygiene > 7
+    return true
   else
-    false
+    return false
   end
 end
 def get_paid(salary)
-   @bank_account += salary
+   self.bank_account += salary
    return 'all about the benjamins'
 end
 
