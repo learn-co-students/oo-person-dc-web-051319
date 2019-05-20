@@ -13,39 +13,43 @@ class Person
   end
 
   def hygiene=(hygiene)
-    @hygiene = check_limit(hygiene)
+    # if hygiene > 10
+    #   @hygiene = 10
+    # elsif hygiene < 0
+    #   @hygiene = 0
+    # else
+    #   @hygiene = hygiene
+    # end
+    @hygiene=hygiene.clamp(0,10)
   end
 
-  def check_limit(value)
-    if value > 10
-      @value = 10
-    elsif value < 0
-      @value = 0
-    else
-      @value = value
-    end
-  end
   def happiness=(happiness)
-    @happiness = check_limit(happiness)
+    # if happiness > 10
+    #   @happiness = 10
+    # elsif happiness < 0
+    #   @happiness = 0
+    # else
+    #   @happiness = happiness
+    # end
+    @happiness=happiness.clamp(0,10)
   end
 
   def happy?
-    self.happiness > 7
+    self.happiness > 7 ? true : false
   end
 
   def clean?
-    self.hygiene > 7
+    self.hygiene > 7 ? true : false
   end
 
   def get_paid(salary)
-    # self.bank_account = self.bank_account + salary
-    self.bank_account += salary
+    self.bank_account = self.bank_account + salary
     return "all about the benjamins"
   end
 
 
   def take_bath
-    self.hygiene = self.hygiene + 4
+    self.hygiene = self.hygiene+4
     return "♪ Rub-a-dub just relaxing in the tub ♫"
 
   end
@@ -65,17 +69,14 @@ class Person
 
   def start_conversation(callee, topic)
     if topic == "politics"
-
       callee.happiness = callee.happiness-2
       self.happiness = self.happiness-2
-
       return "blah blah partisan blah lobbyist"
     elsif topic == "weather"
-      callee.happiness = callee.happiness + 1
-      self.happiness = self.happiness + 1
+      callee.happiness = callee.happiness+1
+      self.happiness = self.happiness+1
       return "blah blah sun blah rain"
     else
-
       return "blah blah blah blah blah"
     end
   end
